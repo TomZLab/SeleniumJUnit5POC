@@ -1,0 +1,15 @@
+{
+  "environment" : "",
+  "externalDisplay": false,
+  "headless": false,
+  "windowXAxis": 0,
+  "windowYAxis": 0,
+  "baseUrl": "",
+  "communityUrl": "",
+  "adminUsername": "",
+  "adminPassword": "",
+  "userUsername": "",
+  "userPassword": "",
+  "communityUserUsername": "",
+  "communityUserPassword": ""
+}
