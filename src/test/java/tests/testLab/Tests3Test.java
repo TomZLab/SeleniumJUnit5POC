@@ -1,6 +1,5 @@
 package tests.testLab;
 
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.*;
 import tests.BaseTest;
 

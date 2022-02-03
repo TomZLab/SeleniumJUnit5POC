@@ -1,6 +1,5 @@
 package tests.testLab;
 
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import tests.BaseTest;
@@ -22,7 +21,7 @@ public class Tests1Test extends BaseTest {
 
     @BeforeAll
     public void classSetup() {
-//        driver.get(testUrl);
+        driver.get(baseUrl);
     }
 
     @Test
