@@ -20,7 +20,7 @@ import tests.BaseTest;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class Tests1Test extends BaseTest {
 
-    @BeforeClass
+    @BeforeAll
     public void classSetup() {
 //        driver.get(testUrl);
     }
