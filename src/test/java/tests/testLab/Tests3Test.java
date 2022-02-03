@@ -4,7 +4,10 @@ import org.junit.jupiter.api.*;
 import tests.BaseTest;
 
 /************************************************************************
- Description : Test class example
+ Description : Test class with
+ - tests executed with unpredictable order
+ - some test methods disabled (@Disabled)
+
  Created by : Tomasz Zulawnik
 
  Class History
@@ -13,38 +16,39 @@ import tests.BaseTest;
  2022-02-02	Tomasz Zulawnik                             Class created
  ************************************************************************/
 
-@Order(3)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class Tests3Test extends BaseTest {
 
     @BeforeAll
-    public void classSetup(){
+    public void classSetup() {
         driver.get(baseUrl);
     }
 
     @Test
-    @Order(1)
-    public void firstTest(){
+    public void firstTest() {
+        //your test code here
+    }
+
+    @Disabled
+    @Test
+    public void secondTest() {
+        //your test code here
     }
 
     @Test
-    @Order(2)
-    public void secondTest(){
+    public void thirdTest() {
+        //your test code here
+    }
+
+    @Disabled
+    @Test
+    public void fourthTest() {
+        //your test code here
     }
 
     @Test
-    @Order(3)
-    public void thirdTest(){
-    }
-
-    @Test
-    @Order(4)
-    public void fourthTest(){
-    }
-
-    @Test
-    @Order(5)
-    public void fifthTest(){
+    public void fifthTest() {
+        //your test code here
     }
 }
