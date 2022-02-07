@@ -2,6 +2,8 @@ package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -29,6 +31,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
+import static io.restassured.RestAssured.*;
+
 /************************************************************************
  Description : BaseTest class
  Created by : Tomasz Zulawnik
@@ -44,6 +48,7 @@ public class BaseTest {
     protected WebDriver driver;
 
     protected static String environment;
+    protected static boolean restAssuredEnabled;
     protected static boolean externalDisplay;
     protected static boolean headless;
     protected static int displayXAxis;
@@ -57,6 +62,9 @@ public class BaseTest {
     protected static String communityUserUsername;
     protected static String communityUserPassword;
 
+    private static String consumerKey;
+    private static String clientSecret;
+
     private final static String ENVIRONMENT_LOCATION_PROPERTY_NAME = "envLocation";
     private static String environmentLocation;
 
@@ -64,9 +72,15 @@ public class BaseTest {
     TestStatus testStatus = new TestStatus();
 
     @BeforeAll
-    public void baseSetup(){
+    public void baseSetup() {
         environmentLocation = System.getProperty(ENVIRONMENT_LOCATION_PROPERTY_NAME);
+
         getEnvironmentData();
+
+        //rest assured oauth2 setup
+        if (restAssuredEnabled) {
+            RestAssured.authentication = oauth2(apiGetSFToken());
+        }
 
         //block notifications popup
         Map<String, Object> prefs = new HashMap<>();
@@ -142,13 +156,35 @@ public class BaseTest {
             adminPassword = (String) jsonObject.get("adminPassword");
             userUsername = (String) jsonObject.get("userUsername");
             userPassword = (String) jsonObject.get("userPassword");
+            restAssuredEnabled = (boolean) jsonObject.get("restAssuredEnabled");
+            ;
+            RestAssured.baseURI = (String) jsonObject.get("baseURI");
             communityUserUsername = (String) jsonObject.get("communityUserUsername");
             communityUserPassword = (String) jsonObject.get("communityUserPassword");
+            consumerKey = (String) jsonObject.get("consumerKey");
+            clientSecret = (String) jsonObject.get("clientSecret");
         } catch (IOException | ParseException e) {
             System.out.println("Cannot read environment.json file.");
             e.printStackTrace();
             System.exit(1);
         }
+    }
+
+    private String apiGetSFToken() {
+        Response response = given()
+                .contentType("application/x-www-form-urlencoded")
+                .formParam("grant_type", "password")
+                .formParam("username", adminUsername)
+                .formParam("password", adminPassword)
+                .formParam("client_id", consumerKey)
+                .formParam("client_secret", clientSecret)
+                .when()
+                .post(baseURI + "/services/oauth2/token")
+                .then()
+                .log().all()
+                .extract().response();
+
+        return response.jsonPath().getString("access_token");
     }
 
     public String takeScreenshot(String timeStamp) {
