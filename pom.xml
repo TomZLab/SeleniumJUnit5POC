@@ -32,7 +32,7 @@
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
-        git checkout <dependency>
+         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>5.0.3</version>
