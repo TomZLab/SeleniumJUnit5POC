@@ -157,7 +157,6 @@ public class BaseTest {
             userUsername = (String) jsonObject.get("userUsername");
             userPassword = (String) jsonObject.get("userPassword");
             restAssuredEnabled = (boolean) jsonObject.get("restAssuredEnabled");
-            ;
             RestAssured.baseURI = (String) jsonObject.get("baseURI");
             communityUserUsername = (String) jsonObject.get("communityUserUsername");
             communityUserPassword = (String) jsonObject.get("communityUserPassword");
