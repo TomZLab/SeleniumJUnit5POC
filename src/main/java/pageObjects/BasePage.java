@@ -27,20 +27,12 @@ public class BasePage {
 
     WebDriver driver;
     public WebDriverWait wait;
-    WebDriverWait wait1;
-    WebDriverWait wait2;
-    WebDriverWait wait5;
-    WebDriverWait wait10;
     Actions action;
     JavascriptExecutor jse;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        this.wait1 = new WebDriverWait(driver, Duration.ofSeconds(1));
-        this.wait2 = new WebDriverWait(driver, Duration.ofSeconds(1));
-        this.wait5 = new WebDriverWait(driver, Duration.ofSeconds(1));
-        this.wait10 = new WebDriverWait(driver, Duration.ofSeconds(1));
         this.action = new Actions(driver);
         this.jse = (JavascriptExecutor) driver;
     }
