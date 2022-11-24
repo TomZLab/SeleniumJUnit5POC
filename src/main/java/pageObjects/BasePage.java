@@ -13,16 +13,6 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.Duration;
 
-/************************************************************************
- Description : BasePage class
- Created by : Tomasz Zulawnik
-
- Class History
- -------------------------------------------------------------------------
- Date 		Author		 							    Reason
- 2022-02-02	Tomasz Zulawnik                             Class created
- ************************************************************************/
-
 public class BasePage {
 
     WebDriver driver;

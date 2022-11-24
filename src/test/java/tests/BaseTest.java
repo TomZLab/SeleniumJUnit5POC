@@ -29,16 +29,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-/************************************************************************
- Description : BaseTest class
- Created by : Tomasz Zulawnik
-
- Class History
- -------------------------------------------------------------------------
- Date 		Author		 							    Reason
- 2022-02-02	Tomasz Zulawnik                             Class created
- ************************************************************************/
-
+@SuppressWarnings({"unused", "BeforeOrAfterWithIncorrectSignature"})
 public class BaseTest {
 
     protected WebDriver driver;
