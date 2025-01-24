@@ -12,7 +12,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <aspectj.version>1.9.7</aspectj.version>
-        <selenim.version>4.6.0</selenim.version>
+        <selenim.version>4.28.1</selenim.version>
         <junit.version>5.9.0</junit.version>
         <webdrivermanager.version>5.3.1</webdrivermanager.version>
         <maven-compiler.version>3.10.1</maven-compiler.version>

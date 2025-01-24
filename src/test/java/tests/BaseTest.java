@@ -70,13 +70,6 @@ public class BaseTest {
             options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1920,1040", "--ignore-certificate-errors");
         }
 
-        //use chromium driver instead of chrome driver
-        if (environment.equals("chromium")) {
-            WebDriverManager.chromiumdriver().setup();
-        } else {
-            WebDriverManager.chromedriver().setup();
-        }
-
         driver = new ChromeDriver(options);
 
         //set window position e.g. for external monitors
