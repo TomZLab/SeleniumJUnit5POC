@@ -4,7 +4,7 @@
   "headless": false,
   "windowXAxis": 0,
   "windowYAxis": 0,
-  "baseUrl": "",
+  "baseUrl": "https://google.com",
   "communityUrl": "",
   "adminUsername": "",
   "adminPassword": "",
