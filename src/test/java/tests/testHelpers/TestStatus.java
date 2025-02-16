@@ -6,7 +6,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 public class TestStatus implements AfterTestExecutionCallback {
     public boolean isFailed;
     @Override
-    public void afterTestExecution(ExtensionContext extensionContext) throws Exception {
+    public void afterTestExecution(ExtensionContext extensionContext) {
         isFailed = extensionContext.getExecutionException().isPresent();
     }
 }

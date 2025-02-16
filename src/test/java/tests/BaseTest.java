@@ -1,6 +1,5 @@
 package tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -55,7 +54,7 @@ public class BaseTest {
     TestStatus testStatus = new TestStatus();
 
     @BeforeAll
-    public void baseSetup(){
+    public void baseSetup() {
         environmentLocation = System.getProperty(ENVIRONMENT_LOCATION_PROPERTY_NAME);
         getEnvironmentData();
 
@@ -86,16 +85,15 @@ public class BaseTest {
         //Add print screen to allure
         if (testStatus.isFailed) {
             String timestamp = java.time.LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSSS"));
-            String pathToPNG = takeScreenshot(timestamp);
-            Path content = Paths.get(pathToPNG);
-            try (InputStream is = Files.newInputStream(content)) {
+            Path pathToPNG = Paths.get(takeScreenshot(timestamp));
+            try (InputStream is = Files.newInputStream(pathToPNG)) {
                 Allure.addAttachment("Screenshot", is);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             //Delete source files
             try {
-                Files.deleteIfExists(Paths.get(pathToPNG));
+                Files.deleteIfExists(pathToPNG);
             } catch (IOException e) {
                 e.printStackTrace();
             }
